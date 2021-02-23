@@ -1,0 +1,15 @@
+{% extends 'weights/base.html' %}
+
+<head>
+    {% block title %}
+        <title>Home Page</title>
+    {% endblock title %}
+</head>
+
+{% block content %}
+<h1>Weights Home Page</h1>
+    {% for user in data %}
+        <h1>{{ user.user }}, {{ user.weight }} lbs</h1>
+    {% endfor %}
+{% endblock content %}
+
