@@ -9,75 +9,32 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     
     <link rel="stylesheet" type="text/css" href="{% static 'weights/styles.css' %}">
-    {% block title %}
-        <title>Weights App</title>
-    {% endblock title %}
+    
+    {% block link %}
+    {% endblock link %}
+    
+    {% if title %}
+        <title>Health App {{ title }}</title>
+    {% else %}
+        <title>Health App</title>
+    {% endif %}
 
     
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-mdb-toggle="collapse"
-                data-mdb-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-            <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
-                    >Disabled</a
-                >
-                </li>
-            </ul>
-            </div>
-        </div>
-        </nav>
-        <ul>
-            <li><a href= "{% url 'home' %}">Home</a></li>
-            <li><a href= "{% url 'about' %}">About Weight</a></li>
-        </ul>
+        {% include 'partials/_navbar.html' %}
     </header>
-    <main role="main" class="container">
-        <div class="row">
-            <div class="col-md-8">
-            {% block content %}{% endblock %}
-            </div>
-            <div class="col-md-4">
-            <div class="content-section">
-                <h3>Activity Tracker</h3>
-                <p class='text-muted'>Keep track of your activities.
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-light">Weight</li>
-                    <li class="list-group-item list-group-item-light">Fasting</li>
-                    <li class="list-group-item list-group-item-light">Excersice</li>
-                    <li class="list-group-item list-group-item-light">Lifting</li>
-                </ul>
-                </p>
-            </div>
-            </div>
-        </div>
+    <main role="main" class="container mb-1 mt-5 full-height">
+    
+
+    <!-- Page Content -->
+    {% block content %} {% endblock content %}
     </main>
+
+    
     <footer>
-        <p>Weight Tracker © 2021 Copyright - Chuck Li Villalobos</p>
+        {% include 'partials/_footer.html' %}
     </footer>
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
