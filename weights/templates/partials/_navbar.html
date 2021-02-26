@@ -24,10 +24,31 @@
           <a class="nav-link" href="{% url 'home' %}">Resources</a>
         </li>
       </ul>
-      <ul class="navbar-text">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Profile</a>
-        </li>
+      
+      <ul class="navbar-nav ml-auto">
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">
+              <i class="far fa-user"></i> PROFILE
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'home' %}">
+              <i class="fas fa-sign-out-alt"></i> LOGOUT
+            </a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">
+              <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">
+              <i class="fas fa-sign-in-alt"></i> Sign Up
+            </a>
+          </li>
+        {% endif %}
       </ul>
     </div>
   </div>
