@@ -7,9 +7,27 @@
 </head>
 
 {% block content %}
-<h1>Weights Home Page</h1>
-    {% for user in data %}
-        <h1>{{ user.user }}, {{ user.weight }} lbs</h1>
-    {% endfor %}
+    <h1>Weights Home Page</h1>
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">User</th>
+            <th scope="col">Weight</th>
+            <th scope="col">Date</th>
+            <th scope="col">Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for weight in data %}
+            <tr>
+            <th scope="row">{{ weight.user }}</th>
+            <td>{{ weight.weight }}</td>
+            {% comment %} <td>{{ weight.date_posted | date:"F d, Y"}}</td> {% endcomment %}
+            <td>{{ weight.date_posted }}</td>
+            <td>{{ weight.notes }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+</table>
 {% endblock content %}
 
