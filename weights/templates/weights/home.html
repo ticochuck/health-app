@@ -11,7 +11,8 @@
     <table class="table">
         <thead>
             <tr>
-            <th scope="col">User</th>
+            <th scope="col"></th>
+            <th scope="col">Username</th>
             <th scope="col">Weight</th>
             <th scope="col">Date</th>
             <th scope="col">Notes</th>
@@ -20,10 +21,13 @@
         <tbody>
             {% for weight in data %}
             <tr>
-            <th scope="row">{{ weight.user }}</th>
+            <th scope="row">
+                <img width='100' class="rounded-circle article-img" src="{{ weight.user.profile.image.url }}">
+            </th>
+            <td>{{ weight.user }}</th>
             <td>{{ weight.weight }}</td>
-            {% comment %} <td>{{ weight.date_posted | date:"F d, Y"}}</td> {% endcomment %}
-            <td>{{ weight.date_posted }}</td>
+            <td>{{ weight.date_posted | date:"F d, Y"}}</td>
+            {% comment %} <td>{{ weight.date_posted }}</td> {% endcomment %}
             <td>{{ weight.notes }}</td>
             </tr>
             {% endfor %}
