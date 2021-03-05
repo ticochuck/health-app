@@ -29,6 +29,13 @@
 
     <main role="main" class="container mb-1 mt-5 full-height">
     
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-" {{ message.tags }}>
+                {{  message }}
+            </div>
+        {% endfor %}
+    {% endif %}
 
     <!-- Page Content -->
     {% block content %} {% endblock content %}

@@ -1,0 +1,24 @@
+{% extends 'weights/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    <title>Login Page</title>
+{% endblock title %}
+
+{% block content %}
+    <div>
+        <form method='POST'>
+            {% csrf_token %}
+            <fieldset>
+                <legend>Log In</legend>
+                {{ form | crispy }}
+            </fieldset>
+            <button type='submit'>Login</button>
+        </form>
+        <p>Need An Account? <a href="{% url 'register' %}">Sign Up Now</a></p>
+    </div>
+
+{% endblock content %}
+
+

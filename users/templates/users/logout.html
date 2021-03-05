@@ -1,0 +1,15 @@
+{% extends 'weights/base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Login Page</title>
+{% endblock title %}
+
+{% block content %}
+    <div>
+        <p>You have been logged out. <a href="{% url 'login' %}">Login again</a></p>
+    </div>
+
+{% endblock content %}
+
+

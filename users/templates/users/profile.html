@@ -1,0 +1,16 @@
+{% extends 'weights/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    <title>Login Page</title>
+{% endblock title %}
+
+{% block content %}
+    <div>
+        <p>{{ user.username }}</p>
+    </div>
+
+{% endblock content %}
+
+
