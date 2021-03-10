@@ -9,8 +9,6 @@
 {% block content %}
     <h1>Weights Home Page</h1>
 
-    <button type="submit">Add Weight</button>
-
     <table class="table">
         <thead>
             <tr>
@@ -18,7 +16,6 @@
             <th scope="col">Username</th>
             <th scope="col">Weight</th>
             <th scope="col">Date</th>
-            <th scope="col">Notes</th>
             </tr>
         </thead>
         <tbody>
@@ -29,9 +26,8 @@
             </th>
             <td>{{ weight.user }}</th>
             <td><a href="{% url 'post-detail' weight.id %}">{{ weight.weight }}</a></td>
-            {% comment %} <td>{{ weight.date_posted | date:"F d, Y"}}</td> {% endcomment %}
-            <td>{{ weight.date_posted }}</td>
-            <td>{{ weight.notes }}</td>
+            <td>{{ weight.date_posted | date:"F d, Y"}}</td>
+            {% comment %} <td>{{ weight.date_posted }}</td> {% endcomment %}
             </tr>
             {% endfor %}
         </tbody>

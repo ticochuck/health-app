@@ -28,6 +28,11 @@
       <ul class="navbar-nav ml-auto">
         {% if user.is_authenticated %}
           <li class="nav-item">
+            <a class="nav-link" href="{% url 'post-create' %}">
+              <i class="far fa-user"></i> Add Weight
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{% url 'profile' %}">
               <i class="far fa-user"></i> Profile
             </a>
