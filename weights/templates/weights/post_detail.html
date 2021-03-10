@@ -9,8 +9,6 @@
 {% block content %}
     <h1>Details Page</h1>
 
-    <button type="submit">Add Weight</button>
-
     <table class="table">
         <thead>
             <tr>
@@ -33,6 +31,10 @@
             {% comment %} <td>{{ weight.date_posted }}</td> {% endcomment %}
             <td>{{ object.notes }}</td>
             </tr>
+            {% if object.user == user %}
+              <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
+              
+            {% endif %}
             
         </tbody>
 </table>
