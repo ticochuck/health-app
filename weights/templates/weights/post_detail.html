@@ -2,12 +2,12 @@
 
 <head>
     {% block title %}
-        <title>Home Page</title>
+        <title>Post Detail Page</title>
     {% endblock title %}
 </head>
 
 {% block content %}
-    <h1>Weights Home Page</h1>
+    <h1>Details Page</h1>
 
     <button type="submit">Add Weight</button>
 
@@ -22,18 +22,18 @@
             </tr>
         </thead>
         <tbody>
-            {% for weight in data %}
+            
             <tr>
             <th scope="row">
-                <img width='75' class="rounded-circle article-img" src="{{ weight.user.profile.image.url }}">
+                <img width='75' class="rounded-circle article-img" src="{{ object.user.profile.image.url }}">
             </th>
-            <td>{{ weight.user }}</th>
-            <td><a href="{% url 'post-detail' weight.id %}">{{ weight.weight }}</a></td>
-            {% comment %} <td>{{ weight.date_posted | date:"F d, Y"}}</td> {% endcomment %}
-            <td>{{ weight.date_posted }}</td>
-            <td>{{ weight.notes }}</td>
+            <td>{{ object.user }}</th>
+            <td>{{ object.weight }}</td>
+            <td>{{ object.date_posted | date:"F d, Y"}}</td>
+            {% comment %} <td>{{ weight.date_posted }}</td> {% endcomment %}
+            <td>{{ object.notes }}</td>
             </tr>
-            {% endfor %}
+            
         </tbody>
 </table>
 {% endblock content %}
