@@ -20,15 +20,17 @@
         </thead>
         <tbody>
             {% for weight in data %}
-            <tr>
-            <th scope="row">
-                <img width='75' class="rounded-circle article-img" src="{{ weight.user.profile.image.url }}">
-            </th>
-            <td>{{ weight.user }}</th>
-            <td><a href="{% url 'post-detail' weight.id %}">{{ weight.weight }}</a></td>
-            <td>{{ weight.date_posted | date:"F d, Y"}}</td>
-            {% comment %} <td>{{ weight.date_posted }}</td> {% endcomment %}
-            </tr>
+              {% if request.user == weight.user %}
+              <tr>
+              <th scope="row">
+                  <img width='75' class="rounded-circle article-img" src="{{ weight.user.profile.image.url }}">
+              </th>
+              <td>{{ weight.user }}</th>
+              <td><a href="{% url 'post-detail' weight.id %}">{{ weight.weight }}</a></td>
+              <td>{{ weight.date_posted | date:"F d, Y"}}</td>
+              {% comment %} <td>{{ weight.date_posted }}</td> {% endcomment %}
+              </tr>
+              {% endif %}
             {% endfor %}
         </tbody>
 </table>

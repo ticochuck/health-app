@@ -20,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-            
+            {% if request.user == object.user %}
             <tr>
             <th scope="row">
                 <img width='75' class="rounded-circle article-img" src="{{ object.user.profile.image.url }}">
@@ -31,10 +31,11 @@
             {% comment %} <td>{{ weight.date_posted }}</td> {% endcomment %}
             <td>{{ object.notes }}</td>
             </tr>
-            {% if object.user == user %}
+            {% comment %} {% if object.user == user %} {% endcomment %}
               <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
               <a class="btn btn-danger btn-sm mt-1 mb-1 ml-1" href="{% url 'post-delete' object.id %}">Delete</a>
-              
+            {% else %}
+              <p>You are not authorized to see this page</p>
             {% endif %}
             
         </tbody>
