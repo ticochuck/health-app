@@ -38,7 +38,7 @@
     {% endif %}
   </tbody>
 </table>
-  <a class="btn btn-primary mt-1 mb-1" href="{% url 'post-update' object.id %}">Home</a>
+  <a class="btn btn-outline-primary mt-1 mb-1" href="{% url 'post-update' object.id %}">Home</a>
   <a class="btn btn-success mt-1 mb-1" href="{% url 'post-update' object.id %}">Update Post</a>
   <a class="btn btn-danger mt-1 mb-1 ml-1" href="{% url 'post-delete' object.id %}">Delete</a>
 {% endblock content %}
