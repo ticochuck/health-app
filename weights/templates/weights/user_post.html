@@ -2,12 +2,12 @@
 
 <head>
     {% block title %}
-        <title>Home Page</title>
+        <title>Home Page by User</title>
     {% endblock title %}
 </head>
 
 {% block content %}
-    <h1>Weights Home Page</h1>
+    <h1 class="mb-3">Weights filtered by {{ view.kwargs.username }} Page</h1>
 
     <table class="table">
         <thead>

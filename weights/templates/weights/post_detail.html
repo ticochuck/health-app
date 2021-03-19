@@ -25,7 +25,7 @@
             <th scope="row">
                 <img width='75' class="rounded-circle article-img" src="{{ object.user.profile.image.url }}">
             </th>
-            <td>{{ object.user }}</th>
+            <td><a href="{% url 'user-post' object.user.username %}">{{ object.user }}</a></th>
             <td>{{ object.weight }}</td>
             <td>{{ object.date_posted | date:"F d, Y"}}</td>
             {% comment %} <td>{{ weight.date_posted }}</td> {% endcomment %}

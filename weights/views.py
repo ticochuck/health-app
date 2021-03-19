@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import (CreateView, DeleteView, DetailView, ListView,
                                   UpdateView)
 
@@ -18,6 +19,18 @@ class PostListView(ListView):
     template_name = 'weights/home.html'
     context_object_name = 'data'
     ordering = ['-date_posted'] # to post newer posts on top
+    paginate_by = 3
+
+
+class UserPostListView(ListView):
+    model = Post
+    template_name = 'weights/user_post.html'
+    context_object_name = 'data'
+    paginate_by = 3
+
+    def get_queryset(self):
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Post.objects.filter(user=user).order_by('-date_posted')
 
 
 class PostDetailView(DetailView):
