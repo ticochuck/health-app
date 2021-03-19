@@ -7,53 +7,55 @@
 </head>
 
 {% block content %}
-    <h1>Weights Home Page</h1>
+  <div>
+    <h1>Health App</h1>
 
     <table class="table">
-        <thead>
-            <tr>
-            <th scope="col"></th>
-            <th scope="col">Username</th>
-            <th scope="col">Weight</th>
-            <th scope="col">Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for weight in data %}
-              {% comment %} {% if request.user == weight.user %} {% endcomment %}
-              <tr>
-              <th scope="row">
-                  <img width='75' class="rounded-circle article-img" src="{{ weight.user.profile.image.url }}">
-              </th>
-              <td><a href="{% url 'user-post' weight.user.username %}">{{ weight.user }}</a></th>
-              <td><a href="{% url 'post-detail' weight.id %}">{{ weight.weight }}</a></td>
-              <td>{{ weight.date_posted | date:"F d, Y"}}</td>
-              {% comment %} <td>{{ weight.date_posted }}</td> {% endcomment %}
-              </tr>
-              {% comment %} {% endif %} {% endcomment %}
-            {% endfor %}
-        </tbody>
-  </table>
-  {% if is_paginated %}
-        
-    {% if page_obj.has_previous %}
-      <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
-      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-    {% endif %}
-
-    {% for num in page_obj.paginator.page_range %}
-      {% if page_obj.number == num %}
-        <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
-      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-        <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+      <thead>
+        <tr>
+        <th scope="col"></th>
+        <th scope="col">Username</th>
+        <th scope="col">Weight</th>
+        <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for weight in data %}
+          {% comment %} {% if request.user == weight.user %} {% endcomment %}
+          <tr>
+          <th scope="row">
+              <img width='75' class="rounded-circle article-img" src="{{ weight.user.profile.image.url }}">
+          </th>
+          <td><a href="{% url 'user-post' weight.user.username %}">{{ weight.user }}</a></th>
+          <td><a href="{% url 'post-detail' weight.id %}">{{ weight.weight }}</a></td>
+          <td>{{ weight.date_posted | date:"F d, Y"}}</td>
+          {% comment %} <td>{{ weight.date_posted }}</td> {% endcomment %}
+          </tr>
+          {% comment %} {% endif %} {% endcomment %}
+        {% endfor %}
+      </tbody>
+    </table>
+    {% if is_paginated %}
+          
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
       {% endif %}
-    {% endfor %}
 
-    {% if page_obj.has_next %}
-      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
-      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% endif %}
+
     {% endif %}
-
-  {% endif %}
+  </div>
 {% endblock content %}
 
