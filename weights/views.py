@@ -26,10 +26,9 @@ class UserPostListView(ListView):
     model = Post
     template_name = 'weights/user_post.html'
     context_object_name = 'data'
-    ordering = ['-date_posted'] # to post newer posts on top
     paginate_by = 3
 
-    def get_query_set(self):
+    def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Post.objects.filter(user=user).order_by('-date_posted')
 
