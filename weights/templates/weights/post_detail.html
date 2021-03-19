@@ -1,44 +1,45 @@
 {% extends 'weights/base.html' %}
 
 <head>
-    {% block title %}
-        <title>Post Detail Page</title>
-    {% endblock title %}
+  {% block title %}
+      <title>Post Detail Page</title>
+  {% endblock title %}
 </head>
 
 {% block content %}
-    <h1>Details Page</h1>
+<h1>Review Your Last Entry</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-            <th scope="col"></th>
-            <th scope="col">Username</th>
-            <th scope="col">Weight</th>
-            <th scope="col">Date</th>
-            <th scope="col">Notes</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% if request.user == object.user %}
-            <tr>
-            <th scope="row">
-                <img width='75' class="rounded-circle article-img" src="{{ object.user.profile.image.url }}">
-            </th>
-            <td><a href="{% url 'user-post' object.user.username %}">{{ object.user }}</a></th>
-            <td>{{ object.weight }}</td>
-            <td>{{ object.date_posted | date:"F d, Y"}}</td>
-            {% comment %} <td>{{ weight.date_posted }}</td> {% endcomment %}
-            <td>{{ object.notes }}</td>
-            </tr>
-            {% comment %} {% if object.user == user %} {% endcomment %}
-              <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
-              <a class="btn btn-danger btn-sm mt-1 mb-1 ml-1" href="{% url 'post-delete' object.id %}">Delete</a>
-            {% else %}
-              <p>You are not authorized to see this page</p>
-            {% endif %}
-            
-        </tbody>
+<table class="table">
+  <thead>
+    <tr>
+    <th scope="col"></th>
+    <th scope="col">Username</th>
+    <th scope="col">Weight</th>
+    <th scope="col">Date</th>
+    <th scope="col">Notes</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% if request.user == object.user %}
+      <tr>
+        <th scope="row">
+            <img width='75' class="rounded-circle article-img" src="{{ object.user.profile.image.url }}">
+        </th>
+        <td><a href="{% url 'user-post' object.user.username %}">{{ object.user }}</a></th>
+        <td>{{ object.weight }}</td>
+        <td>{{ object.date_posted | date:"F d, Y"}}</td>
+        {% comment %} <td>{{ weight.date_posted }}</td> {% endcomment %}
+        <td>{{ object.notes }}</td>
+        </tr>
+    {% comment %} {% if object.user == user %} {% endcomment %}
+    {% else %}
+      <p>You are not authorized to see this page</p>
+    {% endif %}
+  </tbody>
 </table>
+  <a class="btn btn-primary mt-1 mb-1" href="{% url 'post-update' object.id %}">Home</a>
+  <a class="btn btn-success mt-1 mb-1" href="{% url 'post-update' object.id %}">Update Post</a>
+  <a class="btn btn-danger mt-1 mb-1 ml-1" href="{% url 'post-delete' object.id %}">Delete</a>
 {% endblock content %}
 
