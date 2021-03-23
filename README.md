@@ -53,4 +53,9 @@ ALLOWED_HOSTS=localhost,127.0.0.1 (for testing)
 `about/` - about us page;  
 `admin/` - site admin page;
 
+# Coming soon 
 
+- BMI calculator
+- track other activities such as fasting, exersice, meals
+- data upload from csv file to database
+- data export
